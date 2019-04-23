@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateDeviceActivity"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Add Device"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/fontHeader"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_big"
+        android:text="Add Device"
+        android:transitionName="addDeviceBtnTransition"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/deviceIDET"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/card"
+        android:ems="10"
+        android:hint="Enter Device Id"
+        android:inputType="number"
+        android:textColor="@color/cardTextAccentColor"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/deviceNameET"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/card"
+        android:ems="10"
+        android:hint="Enter Device Name (Location)"
+        android:inputType="textCapWords|textCapSentences|textAutoCorrect|textAutoComplete"
+        android:textColor="@color/cardTextAccentColor"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintEnd_toEndOf="@+id/deviceIDET"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/deviceIDET"
+        app:layout_constraintTop_toBottomOf="@+id/deviceIDET" />
+
+</android.support.constraint.ConstraintLayout>

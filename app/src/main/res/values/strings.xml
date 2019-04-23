@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Bachelor</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_view">View</string>
+    <string name="title_add">Add</string>
+
+    <string name="rented">Rented</string>
+    <string name="items">Items</string>
+    <string name="renters">Renters</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

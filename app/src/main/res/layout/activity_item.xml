@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ItemActivity"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Item Name"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        android:textStyle="bold"
+        android:transitionName="itemNameTransition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
+
+
+    <TextView
+        android:id="@+id/itemDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:maxLength="150"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardAccentTextSize"
+        android:transitionName="itemDescriptionTransition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/itemName"
+        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+
+    <Button
+        android:id="@+id/attachBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_big"
+        android:text="Attach RFIDs"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/itemDescription"
+        app:layout_constraintStart_toStartOf="@+id/itemDescription"
+        app:layout_constraintTop_toBottomOf="@+id/itemDescription" />
+
+    <Button
+        android:id="@+id/deleteBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_delete"
+        android:text="Delete Item"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintEnd_toEndOf="@+id/attachBtn"
+        app:layout_constraintStart_toStartOf="@+id/attachBtn"
+        app:layout_constraintTop_toBottomOf="@+id/attachBtn" />
+
+    <ImageView
+        android:id="@+id/itemImage"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:transitionName="itemImageTransition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+</android.support.constraint.ConstraintLayout>

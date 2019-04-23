@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.ViewFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/title_add"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/fontHeader"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/addDeviceButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/button_big"
+            android:text="Add Device"
+            android:transitionName="addDeviceBtnTransition"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/cardMainTextSize"
+            app:layout_constraintEnd_toEndOf="@+id/addRenterButton"
+            app:layout_constraintStart_toStartOf="@+id/addRenterButton"
+            app:layout_constraintTop_toBottomOf="@+id/addRenterButton" />
+
+        <Button
+            android:id="@+id/addItemButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/button_big"
+            android:text="Add Item"
+            android:transitionName="addItemBtnTransition"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/cardMainTextSize"
+            app:layout_constraintBottom_toTopOf="@+id/addRenterButton"
+            app:layout_constraintEnd_toEndOf="@+id/addRenterButton"
+            app:layout_constraintStart_toStartOf="@+id/addRenterButton" />
+
+        <Button
+            android:id="@+id/addRenterButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_big"
+            android:text="Add Renter"
+            android:transitionName="addRenterBtnTransition"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/cardMainTextSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.39" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

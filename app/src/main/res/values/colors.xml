@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#323335</color>
+    <color name="colorPrimary">#c7bc5c</color>
+    <color name="colorAccent">#c7bc5c</color>
+
+    <color name="background2">#232526</color>
+    <color name="background1">#323335</color>
+
+    <color name="navigationBar">#323335</color>
+    <color name="iconColor">#333333</color>
+
+    //Buttons
+    <color name="inactiveButton">#64c7bc5c</color>
+    <color name="colorRed">#d73333</color>
+
+
+    //Cards
+    <color name="cardBackground">#f2f0e3</color>
+    <color name="cardTextMainColor">#262829</color>
+    <color name="cardTextAccentColor">#2f3031</color>
+
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.ProfileFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="Profile"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/fontHeader"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/devices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:text="Devices: #"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/cardMainTextSize"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/renters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Renters: #"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/cardMainTextSize"
+            app:layout_constraintStart_toStartOf="@+id/devices"
+            app:layout_constraintTop_toBottomOf="@+id/devices" />
+
+        <TextView
+            android:id="@+id/items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Items: #"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/cardMainTextSize"
+            app:layout_constraintStart_toStartOf="@+id/renters"
+            app:layout_constraintTop_toBottomOf="@+id/renters" />
+
+        <TextView
+            android:id="@+id/rented"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Rented: #"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/cardMainTextSize"
+            app:layout_constraintStart_toStartOf="@+id/items"
+            app:layout_constraintTop_toBottomOf="@+id/items" />
+
+        <TextView
+            android:id="@+id/stock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Stock: #"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/cardMainTextSize"
+            app:layout_constraintStart_toStartOf="@+id/rented"
+            app:layout_constraintTop_toBottomOf="@+id/rented" />
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>
