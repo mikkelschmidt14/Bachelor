@@ -30,7 +30,7 @@
         android:layout_marginEnd="32dp"
         android:maxLength="150"
         android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/cardBackground"
         android:textSize="@dimen/cardAccentTextSize"
         android:transitionName="itemDescriptionTransition"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,39 +41,84 @@
         android:id="@+id/attachBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_big"
         android:text="Attach RFIDs"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/cardMainTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/deleteBtn"
         app:layout_constraintEnd_toEndOf="@+id/itemDescription"
-        app:layout_constraintStart_toStartOf="@+id/itemDescription"
-        app:layout_constraintTop_toBottomOf="@+id/itemDescription" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/itemDescription" />
 
     <Button
         android:id="@+id/deleteBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/button_delete"
         android:text="Delete Item"
         android:textColor="@color/colorRed"
         android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/attachBtn"
-        app:layout_constraintStart_toStartOf="@+id/attachBtn"
-        app:layout_constraintTop_toBottomOf="@+id/attachBtn" />
+        app:layout_constraintStart_toStartOf="@+id/attachBtn" />
 
     <ImageView
         android:id="@+id/itemImage"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:transitionName="itemImageTransition"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Total: "
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintEnd_toStartOf="@+id/stock"
+        app:layout_constraintTop_toTopOf="@+id/stock" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Out: "
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/rented" />
+
+    <TextView
+        android:id="@+id/rented"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="14"
+        android:transitionName="rentedTransition"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintEnd_toEndOf="@+id/stock"
+        app:layout_constraintTop_toBottomOf="@+id/stock" />
+
+    <TextView
+        android:id="@+id/stock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="123"
+        android:transitionName="stockTransition"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

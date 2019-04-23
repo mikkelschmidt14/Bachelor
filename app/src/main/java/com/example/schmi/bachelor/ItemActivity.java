@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class ItemActivity extends AppCompatActivity {
 
     int itemID;
-    TextView itemName, itemDescription;
+    TextView itemName, itemDescription, stock, rented;
     ImageView itemImage;
     Button attachBtn, deleteBtn;
 
@@ -33,6 +33,8 @@ public class ItemActivity extends AppCompatActivity {
         attachBtn = findViewById(R.id.attachBtn);
         deleteBtn = findViewById(R.id.deleteBtn);
         itemImage = findViewById(R.id.itemImage);
+        stock = findViewById(R.id.stock);
+        rented = findViewById(R.id.rented);
 
         attachBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +108,9 @@ public class ItemActivity extends AppCompatActivity {
             try {
                 itemName.setText(json.getString("itemname"));
                 itemDescription.setText(json.getString("itemdescription"));
+                stock.setText(json.getString("stock"));
+                rented.setText(json.getString("rented"));
+
                 String imageString = json.getString("itemimage");
                 itemImage.setImageBitmap(Services.StringToBitMap(imageString));
             } catch (JSONException e) {

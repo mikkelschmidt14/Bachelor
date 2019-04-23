@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
@@ -88,8 +87,8 @@ public class ItemCardAdapter extends BaseAdapter {
         final TextView itemName = card.findViewById(R.id.itemName);
         final TextView itemDescription = card.findViewById(R.id.itemDescription);
         final ImageView itemImage = card.findViewById(R.id.itemImage);
-        TextView amountRented = card.findViewById(R.id.amountRented);
-        TextView amountStock = card.findViewById(R.id.amountStock);
+        final TextView amountRented = card.findViewById(R.id.amountRented);
+        final TextView amountStock = card.findViewById(R.id.amountStock);
 
         try {
             itemName.setText(json.getString("itemname"));
@@ -99,6 +98,7 @@ public class ItemCardAdapter extends BaseAdapter {
                 Bitmap smallBitmap = Services.StringToBitMap(json.getString("smallBitmap"));
                 itemImage.setImageBitmap(smallBitmap);
             }
+
 
             amountRented.setText("" + json.getInt("rented"));
             amountStock.setText("" + json.getInt("stock"));
@@ -114,11 +114,11 @@ public class ItemCardAdapter extends BaseAdapter {
                 //Insert click here for click on item card
                 System.out.println("Card have been clicked!");
 
-                Intent productIntent = new Intent(context, ItemActivity.class);
+                Intent itemIntent = new Intent(context, ItemActivity.class);
 
                 try {
                     int itemID = json.getInt("itemID");
-                    productIntent.putExtra("itemID", itemID);
+                    itemIntent.putExtra("itemID", itemID);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -126,9 +126,11 @@ public class ItemCardAdapter extends BaseAdapter {
                 Pair p1 = Pair.create(itemName, ViewCompat.getTransitionName(itemName));
                 Pair p2 = Pair.create(itemDescription, ViewCompat.getTransitionName(itemDescription));
                 Pair p3 = Pair.create(itemImage, ViewCompat.getTransitionName(itemImage));
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, p1, p2, p3);
+                Pair p4 = Pair.create(amountRented, ViewCompat.getTransitionName(amountRented));
+                Pair p5 = Pair.create(amountStock, ViewCompat.getTransitionName(amountStock));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, p1, p2, p3, p4, p5);
 
-                context.startActivity(productIntent, options.toBundle());
+                context.startActivity(itemIntent, options.toBundle());
 
             }
         });

@@ -4,11 +4,8 @@
     <string name="title_view">View</string>
     <string name="title_add">Add</string>
 
-    <string name="rented">Rented</string>
+    <string name="rented">Out</string>
     <string name="items">Items</string>
-    <string name="renters">Renters</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="renters">Loaners</string>
 
 </resources>

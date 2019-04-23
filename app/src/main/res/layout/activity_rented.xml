@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RentedActivity"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/renterName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="Renter name"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        android:textStyle="bold"
+        android:transitionName="renterNameTransition"
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Item name"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        android:transitionName="itemNameTransition"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/renterName"
+        app:layout_constraintTop_toBottomOf="@+id/renterName" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="To: "
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="From: "
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintEnd_toStartOf="@+id/rentDate"
+        app:layout_constraintTop_toTopOf="@+id/rentDate" />
+
+    <TextView
+        android:id="@+id/rentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="yyy-MM-dd"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/returnDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="yyy-MM-dd"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        android:transitionName="returnDateTransition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rentDate" />
+
+    <TextView
+        android:id="@+id/itemDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        android:textColor="@color/cardBackground"
+        android:textSize="@dimen/cardAccentTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/itemName"
+        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+
+    <Button
+        android:id="@+id/changeDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_big"
+        android:text="Add or change return date"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/turnIn"
+        app:layout_constraintEnd_toEndOf="@+id/itemDescription"
+        app:layout_constraintStart_toStartOf="@+id/itemDescription" />
+
+    <Button
+        android:id="@+id/turnIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_delete"
+        android:text="Turn in item"
+        android:textColor="@color/colorRed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/changeDate"
+        app:layout_constraintStart_toStartOf="@+id/changeDate" />
+
+</android.support.constraint.ConstraintLayout>

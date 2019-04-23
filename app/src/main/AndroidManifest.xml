@@ -26,7 +26,8 @@
         <activity android:name=".ItemActivity" />
         <activity android:name=".CreateRenterActivity" />
         <activity android:name=".CreateDeviceActivity" />
-        <activity android:name=".CreateItemActivity"></activity>
+        <activity android:name=".CreateItemActivity" />
+        <activity android:name=".RentedActivity"></activity>
     </application>
 
 </manifest>

@@ -74,10 +74,6 @@ public class Services {
 
     public static void postAPI(String address, Bitmap image) {
 
-//        String username="mikkelschmidt14";
-//        int rnd = new Random().nextInt(1000000) + 1;
-//        String filename = "image" + username + rnd;
-
         System.out.println("Calling post API");
         try {
 

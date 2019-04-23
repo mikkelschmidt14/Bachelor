@@ -1,6 +1,12 @@
 package com.example.schmi.bachelor.Fragments.SubFragments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.util.Pair;
+import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +14,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.schmi.bachelor.R;
+import com.example.schmi.bachelor.RentedActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class RentedCardAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
@@ -48,20 +58,29 @@ public class RentedCardAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        JSONObject json = (JSONObject) getItem(i);
+        final JSONObject json = (JSONObject) getItem(i);
         View card = mInflater.inflate(R.layout.card_rented, null);
 
-        TextView renterName = card.findViewById(R.id.renterName);
-        TextView itemName = card.findViewById(R.id.itemName);
-        TextView location = card.findViewById(R.id.location);
-        TextView rentedDate = card.findViewById(R.id.rentedDate);
+        final TextView renterName = card.findViewById(R.id.renterName);
+        final TextView itemName = card.findViewById(R.id.itemName);
+        final TextView location = card.findViewById(R.id.location);
+        final TextView returnDate = card.findViewById(R.id.returnDate);
 
 
         try {
             renterName.setText(json.getString("rentername"));
             itemName.setText(json.getString("itemname"));
             location.setText(json.getString("devicename"));
-            rentedDate.setText(json.getString("date"));
+
+            String rd = json.getString("returndate");
+            returnDate.setText(rd);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date strDate = sdf.parse(rd);
+            if (new Date().after(strDate)) {
+                returnDate.setTextColor(ContextCompat.getColor(context, R.color.colorRed));
+            }
+
+
         } catch (Exception e){
             System.out.println("JSON ISSUE");
         }
@@ -70,8 +89,22 @@ public class RentedCardAdapter extends BaseAdapter {
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Insert click here for click on item card
-                System.out.println("Card have been clicked!");
+
+                Intent rentedIntent = new Intent(context, RentedActivity.class);
+
+                try {
+                    String itemRFID = json.getString("itemRFID");
+                    rentedIntent.putExtra("itemRFID", itemRFID);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Pair p1 = Pair.create(itemName, ViewCompat.getTransitionName(itemName));
+                Pair p2 = Pair.create(renterName, ViewCompat.getTransitionName(renterName));
+                Pair p3 = Pair.create(returnDate, ViewCompat.getTransitionName(returnDate));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, p1, p2, p3);
+
+                context.startActivity(rentedIntent, options.toBundle());
             }
         });
         return card;
