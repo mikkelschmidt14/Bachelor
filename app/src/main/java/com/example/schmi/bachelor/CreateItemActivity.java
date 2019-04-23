@@ -39,7 +39,6 @@ public class CreateItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_item);
-        //requestMultiplePermissions();
 
         nameET = findViewById(R.id.nameET);
         descriptionET = findViewById(R.id.descriptionET);
