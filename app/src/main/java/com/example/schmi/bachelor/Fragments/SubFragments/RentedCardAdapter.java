@@ -28,7 +28,7 @@ public class RentedCardAdapter extends BaseAdapter {
     private JSONArray jsons;
     private Context context;
 
-    RentedCardAdapter(Context c, JSONArray jsons){
+    public RentedCardAdapter(Context c, JSONArray jsons){
         this.context = c;
         this.jsons = jsons;
 
@@ -93,8 +93,12 @@ public class RentedCardAdapter extends BaseAdapter {
                 Intent rentedIntent = new Intent(context, RentedActivity.class);
 
                 try {
+                    int itemID = json.getInt("itemID");
                     String itemRFID = json.getString("itemRFID");
+                    String renterRFID = json.getString("renterRFID");
+                    rentedIntent.putExtra("itemID", itemID);
                     rentedIntent.putExtra("itemRFID", itemRFID);
+                    rentedIntent.putExtra("renterRFID", renterRFID);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

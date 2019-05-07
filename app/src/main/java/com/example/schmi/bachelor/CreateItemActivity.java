@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
@@ -34,16 +35,19 @@ public class CreateItemActivity extends AppCompatActivity {
     EditText nameET, descriptionET;
     ImageView itemImage;
     Bitmap image = null;
+    ConstraintLayout background;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_item);
+        getWindow().getEnterTransition().excludeTarget(android.R.id.statusBarBackground, true);
 
         nameET = findViewById(R.id.nameET);
         descriptionET = findViewById(R.id.descriptionET);
         addItem = findViewById(R.id.addItem);
         itemImage = findViewById(R.id.itemImage);
+        background = findViewById(R.id.background);
 
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +92,7 @@ public class CreateItemActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            String username = "mikkelschmidt14";
+            String username = Values.getInstance().getUsername();
 
             String data = Services.getAPI("Item.php?username=" + username + "&itemname=" + String.valueOf(nameET.getText()));
             if(data.length() > 3){
@@ -128,7 +132,8 @@ public class CreateItemActivity extends AppCompatActivity {
                 Pair p1 = Pair.create(nameET, ViewCompat.getTransitionName(nameET));
                 Pair p2 = Pair.create(descriptionET, ViewCompat.getTransitionName(descriptionET));
                 Pair p3 = Pair.create(itemImage, ViewCompat.getTransitionName(itemImage));
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(CreateItemActivity.this, p1, p2, p3);
+                Pair p4 = Pair.create(background, ViewCompat.getTransitionName(background));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(CreateItemActivity.this, p1, p2, p3, p4);
 
                 CreateItemActivity.this.startActivity(productIntent, options.toBundle());
 
@@ -184,8 +189,6 @@ public class CreateItemActivity extends AppCompatActivity {
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     image = bitmap;
-                    //String path = saveImage(bitmap);
-                    //Toast.makeText(CreateItemActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
                     itemImage.setImageBitmap(bitmap);
 
                 } catch (IOException e) {
@@ -198,8 +201,6 @@ public class CreateItemActivity extends AppCompatActivity {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             image = thumbnail;
             itemImage.setImageBitmap(thumbnail);
-            //saveImage(thumbnail);
-            //Toast.makeText(CreateItemActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
         }
     }
 

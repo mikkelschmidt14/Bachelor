@@ -6,16 +6,16 @@
     android:transitionName="backgroundTransition"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateDeviceActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    tools:context=".LoginActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="Add Scanner"
+        android:text="Login"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/fontHeader"
         android:textStyle="bold"
@@ -23,23 +23,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/create"
+        android:id="@+id/loginBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/button_big"
-        android:text="Add Scanner"
+        android:text="Login"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/bigButtonTextSize"
-        android:transitionName="addDeviceBtnTransition"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/passwordET"
+        app:layout_constraintStart_toStartOf="@+id/passwordET"
+        app:layout_constraintTop_toBottomOf="@+id/passwordET" />
+
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_register"
+        android:text="Register"
+        android:textColor="@color/colorGreen"
+        android:textSize="@dimen/bigButtonTextSize"
+        android:transitionName="registerButtonTransition"
+        app:layout_constraintEnd_toEndOf="@+id/loginBtn"
+        app:layout_constraintStart_toStartOf="@+id/loginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
     <EditText
-        android:id="@+id/deviceIDET"
+        android:id="@+id/usernameET"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -47,28 +58,27 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/card"
         android:ems="10"
-        android:hint="Enter Scanner ID"
-        android:inputType="number"
+        android:hint="Username"
+        android:inputType="text"
         android:textColor="@color/cardTextAccentColor"
         android:textSize="@dimen/cardMainTextSize"
+        android:transitionName="usernameTransition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/deviceNameET"
+        android:id="@+id/passwordET"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/card"
         android:ems="10"
-        android:hint="Enter Scanner Name (Location)"
-        android:inputType="textCapWords|textCapSentences|textAutoCorrect|textAutoComplete"
+        android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="@color/cardTextAccentColor"
         android:textSize="@dimen/cardMainTextSize"
-        app:layout_constraintEnd_toEndOf="@+id/deviceIDET"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/deviceIDET"
-        app:layout_constraintTop_toBottomOf="@+id/deviceIDET" />
-
+        app:layout_constraintEnd_toEndOf="@+id/usernameET"
+        app:layout_constraintStart_toStartOf="@+id/usernameET"
+        app:layout_constraintTop_toBottomOf="@+id/usernameET" />
 </android.support.constraint.ConstraintLayout>

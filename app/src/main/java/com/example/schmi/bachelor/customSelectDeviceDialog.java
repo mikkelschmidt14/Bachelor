@@ -42,6 +42,11 @@ public class customSelectDeviceDialog extends Dialog{
         type = "renter";
     }
 
+    public customSelectDeviceDialog(Activity a, String state) {
+        super(a);
+        type = state;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +62,7 @@ public class customSelectDeviceDialog extends Dialog{
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new attachRFIDs().execute();
+                new makeDeviceScan().execute();
             }
         });
 
@@ -66,7 +71,7 @@ public class customSelectDeviceDialog extends Dialog{
     private String getAddress(){
 
         String result = "";
-        String username = "mikkelschmidt14";
+        String username = Values.getInstance().getUsername();
 
         switch (type){
             case "item" :
@@ -76,14 +81,15 @@ public class customSelectDeviceDialog extends Dialog{
                 result = "state.php?username=" + username + "&devicename=" + spinner.getSelectedItem() + "&state=create renter&info=" + "{\\\"userID\\\":" + "\\\"" + username +"\\\"" + ", \\\"renterName\\\":" + "\\\"" + renterName +"\\\"" + ", \\\"email\\\":" + "\\\"" + email +"\\\"" + "}";
                 break;
             default:
-            break;
+                result = "state.php?username=" + username + "&devicename=" + spinner.getSelectedItem() + "&state=" + type + "&info=null";
+                break;
         }
 
         return result;
 
     }
 
-    private class attachRFIDs extends AsyncTask<Void, Void, Void> {
+    private class makeDeviceScan extends AsyncTask<Void, Void, Void> {
 
         Dialog dialog;
 
@@ -100,7 +106,7 @@ public class customSelectDeviceDialog extends Dialog{
             Services.postAPI(address);
             System.out.println(address);
 
-            String username = "mikkelschmidt14";
+            String username = Values.getInstance().getUsername();
 
             while(true){
                 System.out.println("in while....................");
@@ -115,7 +121,7 @@ public class customSelectDeviceDialog extends Dialog{
                     e.printStackTrace();
                 }
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -144,7 +150,7 @@ public class customSelectDeviceDialog extends Dialog{
         @Override
         protected Void doInBackground(Void... voids) {
 
-            String username = "mikkelschmidt14";
+            String username = Values.getInstance().getUsername();
             String data = Services.getAPI("Device.php?username=" + username);
 
             try {

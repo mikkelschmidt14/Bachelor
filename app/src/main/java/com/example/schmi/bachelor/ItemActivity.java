@@ -1,15 +1,20 @@
 package com.example.schmi.bachelor;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.schmi.bachelor.Fragments.SubFragments.RentedCardAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,13 +26,16 @@ public class ItemActivity extends AppCompatActivity {
     TextView itemName, itemDescription, stock, rented;
     ImageView itemImage;
     Button attachBtn, deleteBtn;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
+        getWindow().getEnterTransition().excludeTarget(android.R.id.statusBarBackground, true);
         postponeEnterTransition();
 
+        listView = findViewById(R.id.listView);
         itemName = findViewById(R.id.itemName);
         itemDescription = findViewById(R.id.itemDescription);
         attachBtn = findViewById(R.id.attachBtn);
@@ -55,13 +63,20 @@ public class ItemActivity extends AppCompatActivity {
         itemID = getIntent().getExtras().getInt("itemID");
 
         new getItemJSON().execute();
+        new getRentedJSONS().execute();
 
     }
 
-    private class deleteItem extends AsyncTask<Void, Void, Void> {
+    private class deleteItem extends AsyncTask<Void, Void, String> {
 
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected String doInBackground(Void... voids) {
+
+            String username = Values.getInstance().getUsername();
+            String data = Services.getAPI("Rents.php?username=" + username + "&itemID=" + itemID);
+
+            if (data.length() > 3)
+                return "Item is being lent";
 
             Services.postAPI("Item.php?delete=1&itemID=" + itemID);
 
@@ -69,20 +84,24 @@ public class ItemActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Void avoid) {
+        protected void onPostExecute(String msg) {
 
-            onBackPressed();
+            if (msg != null) {
+                Toast.makeText(ItemActivity.this, msg, Toast.LENGTH_SHORT).show();
+            } else {
+                onBackPressed();
+            }
+
         }
 
     }
-
 
     private class getItemJSON extends AsyncTask<Void, Void, Void> {
 
         JSONObject json;
 
         @Override
-        protected  void onPreExecute(){
+        protected void onPreExecute(){
 
         }
 
@@ -117,6 +136,42 @@ public class ItemActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             startPostponedEnterTransition();
+
+        }
+
+    }
+
+    private class getRentedJSONS extends AsyncTask<Void, Void, Void> {
+
+        JSONArray jsonArray;
+
+        @Override
+        protected  void onPreExecute(){
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            String username = Values.getInstance().getUsername();
+            String data = Services.getAPI("Rents.php?username=" + username + "&itemID=" + itemID);
+            System.out.println("Result from call is" + data);
+            try {
+                jsonArray = new JSONArray(data);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void avoid) {
+
+            RentedCardAdapter cardAdapter = new RentedCardAdapter(ItemActivity.this, jsonArray);
+            listView.setAdapter(cardAdapter);
+
+            if(jsonArray.length() == 0){
+                listView.setBackground(ContextCompat.getDrawable(ItemActivity.this, R.drawable.ic_sentiment_dissatisfied_black_24dp));
+            }
 
         }
 

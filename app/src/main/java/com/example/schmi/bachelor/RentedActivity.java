@@ -1,14 +1,18 @@
 package com.example.schmi.bachelor;
 
 import android.app.DatePickerDialog;
-import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.schmi.bachelor.Fragments.SubFragments.ItemCardAdapter;
+import com.example.schmi.bachelor.Fragments.SubFragments.RenterCardAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,15 +25,20 @@ public class RentedActivity extends AppCompatActivity {
     TextView renterName, itemName, itemDescription, rentDate, returnDate, location;
 
     Button turnIn, changeDate;
-    String itemRFID = "", newReturnDate;
+    String itemRFID = "", renterRFID = "", newReturnDate;
+    int itemID;
+    ListView itemListView, renterListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rented);
+        getWindow().getEnterTransition().excludeTarget(android.R.id.statusBarBackground, true);
         postponeEnterTransition();
 
+        itemID = getIntent().getExtras().getInt("itemID");
         itemRFID = getIntent().getExtras().getString("itemRFID");
+        renterRFID = getIntent().getExtras().getString("renterRFID");
 
         renterName = findViewById(R.id.renterName);
         itemName = findViewById(R.id.itemName);
@@ -39,6 +48,8 @@ public class RentedActivity extends AppCompatActivity {
         returnDate = findViewById(R.id.returnDate);
         turnIn = findViewById(R.id.turnIn);
         changeDate = findViewById(R.id.changeDate);
+        itemListView = findViewById(R.id.itemListView);
+        renterListView = findViewById(R.id.renterListView);
 
         turnIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +92,8 @@ public class RentedActivity extends AppCompatActivity {
 
 
         new getRentedJSON().execute();
+        new getItemJSON().execute();
+        new getRenterJSON().execute();
 
     }
 
@@ -116,7 +129,7 @@ public class RentedActivity extends AppCompatActivity {
 
             JSONArray jsonArray;
 
-            String username = "mikkelschmidt14";
+            String username = Values.getInstance().getUsername();
             String data = Services.getAPI("rents.php?itemRFID=" + itemRFID + "&username=" + username);
             System.out.println(data);
             try {
@@ -167,6 +180,78 @@ public class RentedActivity extends AppCompatActivity {
         protected void onPostExecute(Void avoid) {
 
             new getRentedJSON().execute();
+
+        }
+
+    }
+
+    private class getItemJSON extends AsyncTask<Void, Void, Void> {
+
+        JSONArray jsonArray;
+
+        @Override
+        protected  void onPreExecute(){
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            String username = Values.getInstance().getUsername();
+            String data = Services.getAPI("Item.php?username=" + username + "&itemID=" + itemID);
+            System.out.println("Result from call is" + data);
+            try {
+                jsonArray = new JSONArray(data);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void avoid) {
+
+            ItemCardAdapter cardAdapter = new ItemCardAdapter(RentedActivity.this, jsonArray);
+            itemListView.setAdapter(cardAdapter);
+
+            if(jsonArray.length() == 0){
+                itemListView.setBackground(ContextCompat.getDrawable(RentedActivity.this, R.drawable.ic_sentiment_dissatisfied_black_24dp));
+            }
+
+        }
+
+    }
+
+    private class getRenterJSON extends AsyncTask<Void, Void, Void> {
+
+        JSONArray jsonArray;
+
+        @Override
+        protected  void onPreExecute(){
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            String username = Values.getInstance().getUsername();
+            String data = Services.getAPI("Renter.php?username=" + username + "&renterRFID=" + renterRFID);
+            System.out.println("Result from call is" + data);
+            try {
+                jsonArray = new JSONArray(data);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void avoid) {
+
+            RenterCardAdapter cardAdapter = new RenterCardAdapter(RentedActivity.this, jsonArray);
+            renterListView.setAdapter(cardAdapter);
+
+            if(jsonArray.length() == 0){
+                itemListView.setBackground(ContextCompat.getDrawable(RentedActivity.this, R.drawable.ic_sentiment_dissatisfied_black_24dp));
+            }
 
         }
 

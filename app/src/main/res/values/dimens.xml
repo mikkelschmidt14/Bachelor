@@ -9,7 +9,7 @@
 
 
     //Buttons
-    <dimen name="bigButtonTextSize">24sp</dimen>
+    <dimen name="bigButtonTextSize">22sp</dimen>
     <dimen name="bigButtonHeight">60sp</dimen>
 
     //Cards

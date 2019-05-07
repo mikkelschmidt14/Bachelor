@@ -2,8 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/card">
 
     <Button
@@ -19,7 +19,7 @@
         android:paddingRight="50sp"
         android:text="Attach RFIDs"
         android:textColor="@color/colorAccent"
-        android:textSize="@dimen/cardMainTextSize"
+        android:textSize="@dimen/bigButtonTextSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="Select device to scan IDs"
+        android:text="Select scanner to scan tags"
         android:textColor="@color/cardTextMainColor"
         android:textSize="@dimen/cardMainTextSize"
         app:layout_constraintEnd_toEndOf="parent"

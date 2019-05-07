@@ -2,6 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
+    android:transitionName="backgroundTransition"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RentedActivity"
@@ -14,7 +16,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:text="Renter name"
+        android:text="Loaner name"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/cardMainTextSize"
         android:textStyle="bold"
@@ -22,6 +24,30 @@
         app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Loaner"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/itemDescription"
+        app:layout_constraintTop_toBottomOf="@+id/itemDescription" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Item"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/cardMainTextSize"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/itemDescription"
+        app:layout_constraintTop_toBottomOf="@+id/renterListView" />
 
     <TextView
         android:id="@+id/itemName"
@@ -105,6 +131,7 @@
         android:background="@drawable/button_big"
         android:text="Add or change return date"
         android:textColor="@color/colorAccent"
+        android:textSize="@dimen/bigButtonTextSize"
         app:layout_constraintBottom_toTopOf="@+id/turnIn"
         app:layout_constraintEnd_toEndOf="@+id/itemDescription"
         app:layout_constraintStart_toStartOf="@+id/itemDescription" />
@@ -117,8 +144,27 @@
         android:background="@drawable/button_delete"
         android:text="Turn in item"
         android:textColor="@color/colorRed"
+        android:textSize="@dimen/bigButtonTextSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/changeDate"
         app:layout_constraintStart_toStartOf="@+id/changeDate" />
+
+    <ListView
+        android:id="@+id/renterListView"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/itemDescription"
+        app:layout_constraintStart_toStartOf="@+id/itemDescription"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ListView
+        android:id="@+id/itemListView"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/renterListView"
+        app:layout_constraintStart_toStartOf="@+id/renterListView"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 </android.support.constraint.ConstraintLayout>

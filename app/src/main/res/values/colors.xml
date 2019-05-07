@@ -13,6 +13,7 @@
     //Buttons
     <color name="inactiveButton">#64c7bc5c</color>
     <color name="colorRed">#d73333</color>
+    <color name="colorGreen">#45b431</color>
 
 
     //Cards

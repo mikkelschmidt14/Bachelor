@@ -28,7 +28,7 @@ public class ItemCardAdapter extends BaseAdapter {
     private JSONArray jsons;
     private Context context;
 
-    ItemCardAdapter(Context c, JSONArray jsons){
+    public ItemCardAdapter(Context c, JSONArray jsons){
         this.context = c;
         for(int i = 0; i < jsons.length(); i++){
             try {

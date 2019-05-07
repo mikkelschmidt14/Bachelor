@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
-            android:text="Devices: #"
+            android:text="Scanners: #"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/cardMainTextSize"
             app:layout_constraintStart_toStartOf="@+id/textView"
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Renters: #"
+            android:text="Loaners: #"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/cardMainTextSize"
             app:layout_constraintStart_toStartOf="@+id/devices"
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Rented: #"
+            android:text="Out: #"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/cardMainTextSize"
             app:layout_constraintStart_toStartOf="@+id/items"
@@ -73,11 +73,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Stock: #"
+            android:text="Total: #"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/cardMainTextSize"
             app:layout_constraintStart_toStartOf="@+id/rented"
             app:layout_constraintTop_toBottomOf="@+id/rented" />
+
+        <Button
+            android:id="@+id/sendRemindersBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_big"
+            android:text="Send Reminders"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/bigButtonTextSize"
+            app:layout_constraintBottom_toTopOf="@+id/deleteItemtagsBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/deleteItemtagsBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_delete"
+            android:text="Delete Itemtags"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/bigButtonTextSize"
+            app:layout_constraintBottom_toTopOf="@+id/deleteRentersBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/deleteRentersBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button_delete"
+            android:text="Delete Loanertags"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/bigButtonTextSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>

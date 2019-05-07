@@ -33,6 +33,7 @@
             android:background="@drawable/button_big"
             android:text="@string/items"
             android:textColor="@color/inactiveButton"
+            android:textSize="@dimen/cardMainTextSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -47,6 +48,7 @@
             android:background="@drawable/button_big"
             android:text="@string/rented"
             android:textColor="@color/inactiveButton"
+            android:textSize="@dimen/cardMainTextSize"
             app:layout_constraintEnd_toStartOf="@+id/addDeviceButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -61,6 +63,7 @@
             android:background="@drawable/button_big"
             android:text="@string/renters"
             android:textColor="@color/inactiveButton"
+            android:textSize="@dimen/cardMainTextSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/addDeviceButton"
             app:layout_constraintTop_toBottomOf="@+id/textView" />

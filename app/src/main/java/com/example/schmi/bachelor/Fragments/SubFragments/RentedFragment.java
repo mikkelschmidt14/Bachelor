@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.example.schmi.bachelor.R;
 import com.example.schmi.bachelor.Services;
+import com.example.schmi.bachelor.Values;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,7 +49,7 @@ public class RentedFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            String username = "mikkelschmidt14"; //Get user name
+            String username = Values.getInstance().getUsername();
             String data = Services.getAPI("Rents.php?username=" + username);
             System.out.println("Result from call is" + data);
             try {

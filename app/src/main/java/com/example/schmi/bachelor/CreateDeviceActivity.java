@@ -26,6 +26,7 @@ public class CreateDeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_device);
+        getWindow().getEnterTransition().excludeTarget(android.R.id.statusBarBackground, true);
 
         create = findViewById(R.id.create);
         deviceIDET = findViewById(R.id.deviceIDET);
@@ -64,7 +65,7 @@ public class CreateDeviceActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            String username = "mikkelschmidt14"; //Get user name
+            String username = Values.getInstance().getUsername();
 
             String data = Services.getAPI("Device.php?deviceID=" + Integer.valueOf(String.valueOf(deviceIDET.getText())));
 
