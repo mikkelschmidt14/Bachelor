@@ -44,7 +44,7 @@ public class RentersFragment extends Fragment {
 
         @Override
         protected  void onPreExecute(){
-            dialog = ProgressDialog.show(getContext(), "Retrieving renters","Loading. Please wait...");
+            dialog = ProgressDialog.show(getContext(), "Retrieving loaners","Loading. Please wait...");
         }
 
         @Override

@@ -17,7 +17,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/cardMainTextSize"
         android:textStyle="bold"
-        android:transitionName="renterNameTransition"
+        android:transitionName="renterNameTransitionRenterCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="email@address.com"
-        android:transitionName="emailTransition"
+        android:transitionName="emailTransitionRenterCard"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/cardAccentTextSize"
         app:layout_constraintStart_toStartOf="@+id/renterName"

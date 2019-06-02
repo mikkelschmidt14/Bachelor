@@ -17,7 +17,7 @@
         android:textColor="@color/cardTextMainColor"
         android:textSize="@dimen/cardMainTextSize"
         android:textStyle="bold"
-        android:transitionName="itemNameTransition"
+        android:transitionName="itemNameTransitionItemCard"
         app:layout_constraintEnd_toStartOf="@+id/amountRented"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,7 +60,7 @@
         android:text="Item Description"
         android:textColor="@color/cardTextAccentColor"
         android:textSize="@dimen/cardAccentTextSize"
-        android:transitionName="itemDescriptionTransition"
+        android:transitionName="itemDescriptionTransitionItemCard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/amountRented"
         app:layout_constraintStart_toEndOf="@+id/itemImage"

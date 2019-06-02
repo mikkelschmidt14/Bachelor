@@ -17,7 +17,7 @@
         android:textColor="@color/cardTextMainColor"
         android:textSize="@dimen/cardMainTextSize"
         android:textStyle="bold"
-        android:transitionName="renterNameTransition"
+        android:transitionName="renterNameTransitionRentedCard"
         app:layout_constraintEnd_toStartOf="@+id/returnDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:text="Item Name"
-        android:transitionName="itemNameTransition"
+        android:transitionName="itemNameTransitionRentedCard"
         android:textColor="@color/cardTextAccentColor"
         android:textSize="@dimen/cardAccentTextSize"
         app:layout_constraintBottom_toBottomOf="parent"
